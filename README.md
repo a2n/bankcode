@@ -7,23 +7,48 @@
 ## 特色
 *  JSON 格式
 *  比對 ```Last-Modified``` 資訊。
-
-
-#資料
-## 格式
-格式採用 JSON 。
-
-	{
-  	  "機構類別": {
-        "機構名稱": "機構代碼"
-  	  }
-  	}
+*  支援 Javascript。
 
 ## 來源
 玉山銀行 - [ATM跨行轉帳金融機構代號一覽表](http://www.esunbank.com.tw/event/announce/BankCode.htm)
 
 ## 更新時間
 Mon, 18 Jan 2016 08:37:38 GMT
+
+#用法
+## JSON
+格式採用 JSON，直接解析使用。
+```json
+	[
+	  {
+        "No": "機構代碼",
+        "Name": "機構名稱",
+        "Type": "機構類別"
+      }
+    ]
+```
+
+
+## JavaScript
+```html
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Title</title>
+</head>
+<body>
+	<script src="https://rawgit.com/a2n/bankcode/master/bankcode.min.js"></script>
+	<script>
+		(function() {
+			Bankcode.forEach(function(bank) {
+				console.log(bank.Name + '(' + bank.No + '): ' + bank.Type)
+			});
+		})();
+	</script>
+</body>
+</html>
+```
+
 
 # TODOs
 *  整合 git 自動更新。
